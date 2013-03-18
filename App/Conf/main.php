@@ -82,6 +82,9 @@ return array(
 		'cache_lifetime'=>0,
 		'left_delimiter'=>'{(',
 		'right_delimiter'=>')}',
+			
+		//自定义 render方案
+		//'strategy'=>'JsonRenderStrategy',
 	),
 	
 );
