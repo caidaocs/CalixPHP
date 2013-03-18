@@ -67,3 +67,13 @@ function H($filename)
 {
 	Calix::importExtHelper($filename);
 }
+
+
+/**
+ * 加载Lib
+ * @param $filename
+ */
+function L($filename)
+{
+	Calix::importExtLib($filename);
+}
