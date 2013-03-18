@@ -677,7 +677,7 @@ class CActiveRecord extends CModel
 		}		
 		
 		//关联处理
-		$this->_findRelations(&$row);
+		$this->_findRelations($row);
 		
 		$this->_attributes=array_merge($this->_attributes,$row);
 		$this->_recordState=self::OLD_RECORD;
