@@ -202,7 +202,11 @@ interface IDbCommand
 
 interface IRender
 {
+	function render($data,$tpl=NULL);
+}
+
+interface IRenderStrategy
+{
 	function assign($name,$value);
-	function display($tpl);
-	function render($tpl);
+	function display($tpl=NULL);
 }

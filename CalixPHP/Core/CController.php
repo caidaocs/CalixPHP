@@ -267,33 +267,14 @@ class CController extends CComponent implements IController
 	}
 	
 	
-	/**
-	 * 变量分配
-	 * @param $name
-	 * @param $value
-	 */
-	public function assign($name,$value)
-	{
-		$this->_render->assign($name, $value);
-	}
 	
 	
 	/**
-	 * 视图显示
-	 * @param $tpl
-	 */
-	public function display($tpl)
-	{
-		$this->_render->display($tpl);
-	}
-	
-	
-	/**
-	 * 视图渲染
+	 * 视图输出
 	 * @param  $tpl
 	 */
-	public function render($tpl)
+	public function render($data,$tpl=NULL)
 	{
-		$this->_render->render($tpl);
+		$this->_render->render($data,$tpl);
 	}
 }

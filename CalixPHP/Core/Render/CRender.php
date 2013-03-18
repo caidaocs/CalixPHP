@@ -49,26 +49,27 @@ class CRender extends CComponent implements IRender
 			$this->_strategy->cache_lifetime=$this->_configs['cache_lifetime'];
 			$this->_strategy->left_delimiter=$this->_configs['left_delimiter'];
 			$this->_strategy->right_delimiter=$this->_configs['right_delimiter'];
+		}elseif(!empty($this->_configs['strategy'])){
+			$strategy=$this->_configs['strategy'];
+			$this->_strategy=new $strategy();
 		}else{
-			throw new CComponentException("暂时不开放不采用模板引擎的方案。", $this);
+			throw new CComponentException("没有为Render分配渲染方案。", $this);
 		}
 	}
+
 	
-	
-	public function assign($name,$value)
+	public function render($data,$tpl=NULL)
 	{
-		$this->_strategy->assign($name,$value);
-	}
-	
-	
-	public function display($tpl)
-	{
+		if(!is_array($data)){
+			throw new CComponentException('渲染数据必须为数组！', $this);
+		}	
+
+		foreach($data as $name=>$value)
+		{
+			$this->_strategy->assign($name,$value);
+		}
+		
 		$this->_strategy->display($tpl);
-	}
-	
-	public function render($tpl)
-	{
-		throw new CComponentException("暂时不开放不采用模板引擎的方案。", $this);
 	}
 	
 	protected function _defaultConfigs()

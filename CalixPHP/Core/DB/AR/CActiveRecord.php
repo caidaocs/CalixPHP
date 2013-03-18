@@ -379,7 +379,6 @@ class CActiveRecord extends CModel
 			}
 			
 			$this->_dbCommand->from($this->_fullTableName);
-			echo $this->_dbCommand->getText();
 			return $this->_dbCommand->queryAll();	
 		}
 		

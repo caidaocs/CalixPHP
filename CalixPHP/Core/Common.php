@@ -30,3 +30,40 @@ function D($model)
 	$model.='Model';
 	return new $model();
 }
+
+
+/**
+ * 读取配置文件
+ * @param  $filename
+ */
+function C($filename)
+{
+	$config=Calix::getApp()->getComponent("Config");
+	return $config->getUserConfig($filename);
+}
+
+/**
+ * 获得客户端输入
+ * @param  $keyname
+ */
+function I($keyname)
+{
+	if(!isset($_GET[$keyname])){
+		if(!isset($_POST[$keyname])){
+			return NULL;
+		}else{
+			return $_POST[$keyname];
+		}
+	}else{
+		return $_GET[$keyname];
+	}
+}
+
+/**
+ * 加载Helper
+ * @param  $filename
+ */
+function H($filename)
+{
+	Calix::importExtHelper($filename);
+}

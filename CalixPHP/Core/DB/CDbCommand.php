@@ -24,6 +24,12 @@ class CDbCommand implements IDbCommand
 	
 	
 	/**
+	 * 上次命令语句
+	 * @var String
+	 */
+	protected $_lastText;
+	
+	/**
 	 * 命令语句组成
 	 * @var Array
 	 */
@@ -109,6 +115,11 @@ class CDbCommand implements IDbCommand
 		}
 		
 		return $this->_text;
+	}
+	
+	public function getLastText()
+	{
+		return $this->_lastText;
 	}
 	
 	
@@ -785,6 +796,7 @@ class CDbCommand implements IDbCommand
 	 */
 	public function reset()
 	{
+		$this->_lastText=$this->_text;
 		$this->_text=NULL;
 		$this->_query=array();
 		$this->_params=array();
